@@ -1,6 +1,3 @@
-[submodule "redis"]
-	path = redis
-	url = git://github.com/tibbon/chef-redis.git
 [submodule "postgresql"]
 	path = postgresql
 	url = git@github.com:tibbon/postgresql.git
