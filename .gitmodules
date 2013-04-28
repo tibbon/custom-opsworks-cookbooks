@@ -4,3 +4,6 @@
 [submodule "varnish"]
 	path = varnish
 	url = git://github.com/tibbon/varnish.git
+[submodule "redis"]
+	path = redis
+	url = git@github.com:tibbon/redisio.git
