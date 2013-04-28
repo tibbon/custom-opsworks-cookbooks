@@ -7,3 +7,12 @@
 [submodule "redisio"]
 	path = redisio
 	url = git@github.com:tibbon/redisio.git
+[submodule "openssl"]
+	path = openssl
+	url = git@github.com:opscode-cookbooks/openssl.git
+[submodule "database"]
+	path = database
+	url = git@github.com:opscode-cookbooks/database.git
+[submodule "build-essential"]
+	path = build-essential
+	url = git@github.com:opscode-cookbooks/build-essential.git
