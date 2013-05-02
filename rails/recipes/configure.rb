@@ -17,7 +17,7 @@ node[:deploy].each do |application, deploy|
     mode "0660"
     group deploy[:group]
     owner deploy[:user]
-    variables(:database => deploy[:database], :environment => deploy[:rails_env])
+    variables(:database => deploy[:database], :database_instance_dns_name => node[:opsworks][:layers][:postgres][:instances][postgres_server][:private_dns_name], :environment => deploy[:rails_env])
 
     notifies :run, resources(:execute => "restart Rails app #{application}")
 
