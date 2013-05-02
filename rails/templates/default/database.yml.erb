@@ -1,5 +1,6 @@
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 <%= env %>:
+  foo: true
   adapter: <%= @database[:adapter] %>
   database: <%= @database[:database] %>
   encoding: utf8
