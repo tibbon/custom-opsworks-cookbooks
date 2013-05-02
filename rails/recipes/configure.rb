@@ -8,16 +8,17 @@ node[:deploy].each do |application, deploy|
     command node[:opsworks][:rails_stack][:restart_command]
     action :nothing
   end
-
+  postgres_server = node[:opsworks][:layers][:redis][:instances].keys.first rescue nil
+  postgres_ip = node[:opsworks][:layers][:postgres][:instances][postgres_server][:private_dns_name]
   node[:deploy][application][:database][:adapter] = OpsWorks::RailsConfiguration.determine_database_adapter(application, node[:deploy][application], "#{node[:deploy][application][:deploy_to]}/current", :force => node[:force_database_adapter_detection])
-
+  node[:deploy][application[:database][:host] = postgres_ip
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
     source "database.yml.erb"
     cookbook 'rails'
     mode "0660"
     group deploy[:group]
     owner deploy[:user]
-    variables(:database => deploy[:database], :database_instance_dns_name => node[:opsworks][:layers][:postgres][:instances].first[:private_dns_name], :environment => deploy[:rails_env])
+    variables(:database => deploy[:database], :environment => deploy[:rails_env])
 
     notifies :run, resources(:execute => "restart Rails app #{application}")
 
