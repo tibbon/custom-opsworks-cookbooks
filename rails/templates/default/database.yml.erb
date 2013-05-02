@@ -5,7 +5,7 @@
   adapter: <%= @database[:adapter] %>
   database: <%= @database[:database] %>
   encoding: utf8
-  host: <%= @postgres_ip || 'localhost' %>
+  host: <%= node[:opsworks][:layers][:postgres][:instances][:postgres1][:private_dns_name] || 'localhost' %>
   username: <%= @database[:username] %>
   password: <%= @database[:password] %>
   reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
