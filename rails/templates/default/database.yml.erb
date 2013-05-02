@@ -1,10 +1,11 @@
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
+
 <%= env %>:
   foo: true
   adapter: <%= @database[:adapter] %>
   database: <%= @database[:database] %>
   encoding: utf8
-  host: <%= @database[:host] || 'localhost' %>
+  host: <%= @postgres_ip || 'localhost' %>
   username: <%= @database[:username] %>
   password: <%= @database[:password] %>
   reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
