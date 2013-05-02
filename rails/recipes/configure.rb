@@ -8,7 +8,7 @@ node[:deploy].each do |application, deploy|
     command node[:opsworks][:rails_stack][:restart_command]
     action :nothing
   end
-  postgres_server = node[:opsworks][:layers][:redis][:instances].keys.first rescue nil
+  postgres_server = node[:opsworks][:layers][:postgres][:instances].keys.first rescue nil
   postgres_ip = node[:opsworks][:layers][:postgres][:instances][postgres_server][:private_dns_name]
   node[:deploy][application][:database][:adapter] = OpsWorks::RailsConfiguration.determine_database_adapter(application, node[:deploy][application], "#{node[:deploy][application][:deploy_to]}/current", :force => node[:force_database_adapter_detection])
   node[:deploy][application[:database][:host] = postgres_ip
