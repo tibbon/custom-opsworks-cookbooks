@@ -84,7 +84,7 @@
 #   * A general workstation, perhaps for a developer
 
 # Parse out db_type option, or use default.
-db_type = 'mixed'
+db_type = 'web' #Was mixed
 
 if (node['postgresql'].attribute?('config_pgtune') && node['postgresql']['config_pgtune'].attribute?('db_type'))
   db_type = node['postgresql']['config_pgtune']['db_type']
