@@ -135,7 +135,7 @@ if (node['postgresql'].attribute?('config_pgtune') && node['postgresql']['config
 end
 
 # Ohai reports node[:memory][:total] in kB, as in "921756kB"
-mem = total_memory.split("kB")[0].to_i / 1024 # in MB
+mem = 1700 #total_memory.split("kB")[0].to_i / 1024 # in MB
 
 #######
 # RAM-related settings computed as in Greg Smith's pgtune script.

@@ -1,5 +1,0 @@
-*.sw?
-Gemfile.lock
-pkg/
-tmp/
-coverage/
