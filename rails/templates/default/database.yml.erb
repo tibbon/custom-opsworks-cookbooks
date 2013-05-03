@@ -1,4 +1,4 @@
-<% @postgres_ip = node[:opsworks][:layers][:postgres][:instances][:postgres1][:ip] rescue nil %>
+<% @postgres_ip = node[:opsworks][:layers][:postgres][:instances][:postgres1][:private_ip] rescue nil %>
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 
 <%= env %>:
