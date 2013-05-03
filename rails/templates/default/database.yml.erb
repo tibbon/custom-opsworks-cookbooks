@@ -8,7 +8,7 @@
   encoding: utf8
   host: <%= @postgres_ip || 'localhost' %>
   username: 'postgres'
-  password: <%= @database[:password] %>
+  password: <%= node[:postgresql][:password][:postgres] %>
   reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
 
 <% end -%>
