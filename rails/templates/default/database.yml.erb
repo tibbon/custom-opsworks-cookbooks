@@ -7,7 +7,7 @@
   database: <%= @database[:database] %>
   encoding: utf8
   host: <%= @postgres_ip || 'localhost' %>
-  username: <%= @database[:username] %>
+  username: 'postgres'
   password: <%= @database[:password] %>
   reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
 
