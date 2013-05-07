@@ -20,6 +20,11 @@
 
 package "varnish"
 
+service "varnish" do
+  supports :restart => true, :reload => true
+  action [ :enable, :start ]
+end
+
 template "#{node['varnish']['dir']}/default.vcl" do
   source "default.vcl.erb"
   owner "root"
@@ -34,11 +39,6 @@ template node['varnish']['default'] do
   mode 0644
   notifies :restart, resources(:service => "varnish")
   #notifies :restart, "service[varnish]"
-end
-
-service "varnish" do
-  supports :restart => true, :reload => true
-  action [ :enable, :start ]
 end
 
 service "varnishlog" do
