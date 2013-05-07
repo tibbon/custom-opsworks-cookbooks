@@ -32,7 +32,8 @@ template node['varnish']['default'] do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, "service[varnish]"
+  notifies :restart, resources(:service => "varnish")
+  #notifies :restart, "service[varnish]"
 end
 
 service "varnish" do
