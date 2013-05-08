@@ -15,8 +15,8 @@ MEMLOCK=<%= node['varnish']['memlock'] %>
 
 # Default varnish instance name is the local nodename.  Can be overridden with
 # the -n switch, to have more instances on a single server.
-INSTANCE=<%= node['varnish']['instance'] %>
-
+# INSTANCE=<%= node['varnish']['instance'] %>
+INSTANCE=$(uname -n)
 
 
 # Pass the Daemon options
