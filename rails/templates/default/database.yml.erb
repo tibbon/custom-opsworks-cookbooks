@@ -1,4 +1,4 @@
-<% @postgres_ip = node[:opsworks][:layers][:postgres][:instances][:"postgres-master"][:private_ip] rescue nil %>
+<% @postgres_master_ip = node[:opsworks][:layers][:postgres][:instances][:"postgres-master"][:private_ip] rescue nil %>
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 
 <%= env %>:
@@ -6,7 +6,7 @@
   adapter: <%= @database[:adapter] %>
   database: <%= @database[:database] %>
   encoding: utf8
-  host: <%= @postgres_ip || 'localhost' %>
+  host: <%= @postgres_master_ip || 'localhost' %>
   username: 'postgres'
   password: <%= node[:postgresql][:password][:postgres] %>
   reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
